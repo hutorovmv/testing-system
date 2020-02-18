@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Налаштування";
+}
+
+@*<div class="row">*@
+<div class="container pb-4">
+    @*<section id="navData" class="col-3 offset-1" role="tablist">*@
+    <section id="navData" class="row mb-4">
+        @Html.Action("_ShowNavigation")
+    </section>
+      
+
+    <div id="data" class="row d-flex flex-column justify-content-around align-items-center">
+        @using (Ajax.BeginForm("_AccountSettings", null, new AjaxOptions
+        {
+            UpdateTargetId = "data",
+            LoadingElementId = "loadingSettings",
+            LoadingElementDuration = 200
+        }, new { id = "settings" })) { }
+
+        @Html.Preloader("loadingSettings")
+    </div>
+</div>

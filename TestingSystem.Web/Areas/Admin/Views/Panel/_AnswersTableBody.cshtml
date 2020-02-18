@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TestingSystem.Web.Areas.Admin.Data.AnswerTableModel>
+
+@foreach (var item in Model)
+{
+    <tr class="text-center">
+        <td class="h-100 align-middle text-left w-75">
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td class="h-100 align-middle @(item.IsCorrect ? "bg-success" : "bg-danger")">
+            @Html.DisplayFor(modelItem => item.IsCorrect)
+        </td>
+        <td class="d-flex flex-column justify-content-center align-items-stretch">
+            @Ajax.ActionLink("Edit", "_EditAnswer", "Test", new { answerId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data-form"
+            }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2 rounded" })
+            @Ajax.ActionLink("Delete", "_DeleteAnswer", "Test", new { answerId = item.Id, questionId = item.QuestionId }, new AjaxOptions() { UpdateTargetId = "data" }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2 rounded" })
+        </td>
+    </tr>
+}

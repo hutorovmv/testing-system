@@ -1,0 +1,19 @@
+﻿@model TestingSystem.Web.Models.PanelItem[]
+
+<nav class="nav nav-pills nav-fill bg-dark w-100 rounded mx-auto">
+    @for (int i = 0; i < Model.Length; i++)
+    {
+        string classes = "nav-item nav-link text-white rounded horizontal-navigation-link py-3 ";
+
+        if (i == 0)
+        {
+            classes += "active";
+        }
+
+        @Ajax.ActionLink(Model[i].Name, Model[i].Action, Model[i].Controller, new { area = Model[i].Area }, new AjaxOptions
+        {
+            HttpMethod = "Get",
+            UpdateTargetId = Model[i].UpdateTargetId ?? "data"
+        }, new { @class = classes })
+    }
+</nav>

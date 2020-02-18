@@ -1,0 +1,18 @@
+﻿@model TestingSystem.BLL.DTO.QuestionDTO
+
+<div class="card col-7 p-4 bg-white rounded border-0 shadow-sm">
+    <p class="my-4 py-2">
+        @Model.Text
+    </p>
+</div>
+
+<div class="answers w-100">
+    @if (Model.CorrectAnswersNumber > 1)
+    {
+        @Html.Partial("_AnswersCheckbox", Model.Answers)
+    }
+    else
+    {
+        @Html.Partial("_AnswersRadio", Model.Answers)
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model PagedList<TestingSystem.Web.Areas.Admin.Data.QuestionTableModel>
+
+@using (Ajax.BeginForm("_QuestionsForTest", "Panel", new { area = "Admin" }, new AjaxOptions
+{
+    UpdateTargetId = "data",
+}, new { id = "pagination-form" }))
+{
+    <input id="page-index" type="hidden" name="pageIndex" value="1" />
+    <input id="testId" type="hidden" name="testId" value="@ViewBag.TestId" />
+}
+
+@Html.Partial("_StatusMessage")
+
+<div id="data-form"></div>
+
+@Ajax.ActionLink("Add question", "_CreateQuestion", "Test", new { area = "Admin", testId = ViewBag.TestId }, new AjaxOptions
+{
+    UpdateTargetId = "data-form"
+}, new { @class = "btn btn-primary" })
+
+<div class="row d-flex justify-content-start align-items-stretch my-4">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            @Html.Partial("_QuestionsTableHead", Model.Items)
+        </thead>
+        <tbody>
+            @Html.Partial("_QuestionsTableBody", Model.Items)
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_Pagination", Model)

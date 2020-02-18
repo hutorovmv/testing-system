@@ -1,0 +1,28 @@
+﻿@model PagedList<TestingSystem.Web.Areas.Admin.Data.TestTableModel>
+
+@Html.Partial("_TestExtendedSearchForm", new RouteValues
+{
+    Action = "_ExtendedAdminTestSearch",
+    Controller = "Panel",
+    Area = "Admin"
+})
+
+@Html.Partial("_StatusMessage")
+
+@Ajax.ActionLink("Create test", "_Create", "Test", new { area = "Admin" }, new AjaxOptions
+{
+    UpdateTargetId = "data"
+}, new { @class = "btn btn-primary mt-3" })
+
+<div class="row d-flex justify-content-start align-items-stretch my-4">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            @Html.Partial("_TestsTableHead", Model.Items)
+        </thead>
+        <tbody>
+            @Html.Partial("_TestsTableBody", Model.Items)
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_Pagination", Model)

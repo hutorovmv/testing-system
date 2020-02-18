@@ -1,0 +1,22 @@
+﻿@model PagedList<TestingSystem.Web.Areas.Admin.Data.UserTableModel>
+
+
+@Html.Partial("_UserExtendedSearchForm", new RouteValues
+{
+    Action = "_ExtendedAdminUserSearch",
+    Controller = "Panel",
+    Area = "Admin"
+})
+
+<div class="row d-flex justify-content-start align-items-stretch my-4">
+    <table class="table table-dark table-bordered table-striped">
+        <thead>
+            @Html.Partial("_UsersTableHead", Model.Items)
+        </thead>
+        <tbody>
+            @Html.Partial("_UsersTableBody", Model.Items)
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_Pagination", Model)

@@ -1,0 +1,35 @@
+﻿@model TestingSystem.Web.Areas.User.Data.UserProfileModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10 col-lg-3 text-lg-left mb-3 mb-lg-0 bg-white rounded-lg shadow py-3">
+                    @Html.ImageFromArray(Model.ProfilePhoto, "profile-photo-large m-auto")
+                </div>
+                <div class="col-12 col-md-10 col-lg-7 text-center text-lg-left px-2">
+                    <div class="bg-white rounded-lg shadow p-4 h-100">
+                        <h2 class="border-bottom pb-3 mb-4">@Model.FullName</h2>
+
+                        @if (Model.BirthDate != null)
+                        {
+                            @Html.InfoString("BirthDate", Model.BirthDate)
+                        }
+                        @if (Model.ContactEmail != null)
+                        {
+                            @Html.InfoString("ContactEmail", Model.ContactEmail)
+                        }
+                        @if (Model.ContactPhone != null)
+                        {
+                            @Html.InfoString("ContactPhone", Model.ContactPhone)
+                        }
+                        @if (Model.AboutMe != null)
+                        {
+                            @Html.InfoString("AboutMe", Model.AboutMe)
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

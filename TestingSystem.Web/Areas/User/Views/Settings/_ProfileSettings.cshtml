@@ -1,0 +1,75 @@
+﻿@model TestingSystem.Web.Areas.User.Data.ProfileSettingsModel
+
+<section class="card col-7 p-4 border-0 shadow-sm mt-4 mx-auto">
+    <h2>Profile</h2>
+    <hr />
+
+    @Html.Partial("_StatusMessage")
+
+    @using (Ajax.BeginForm("_ProfileSettings", null, new AjaxOptions
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "data",
+        LoadingElementId = "loadingSettings",
+        LoadingElementDuration = 200
+    }, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group pb-2">
+            <label for="profilePhoto" class="d-flex flex-column justify-content-around align-items-center">
+                <span class="badge-pill badge-dark badge-edit">Edit</span>
+                @Html.ImageFromArray(Model.ProfilePhoto, "profile-photo-mid", "profileImage", "profileImage")
+            </label>
+            <input id="profilePhoto" name="photo" type="file" onchange="readUrl(this);" class="d-none" />
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control"/*, type = "date"*/ } })
+                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.ContactEmail, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.ContactEmail, new { htmlAttributes = new { @class = "form-control"/*, type = "email"*/ } })
+                @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.ContactPhone, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group py-1">
+            @Html.LabelFor(model => model.AboutMe, htmlAttributes: new { @class = "control-label mb-2" })
+            <div>
+                @Html.EditorFor(model => model.AboutMe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AboutMe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-warning d-block mt-3 mx-auto">Save</button>
+    }
+</section>

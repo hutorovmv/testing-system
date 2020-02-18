@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="py-4 border rounded w-100">
+            @using (Ajax.BeginForm("_Selection", null, new AjaxOptions
+            {
+                UpdateTargetId = "data",
+                LoadingElementId = "loadingItems",
+                LoadingElementDuration = 200
+            }, new { id = "pagination-form", @class = "mx-auto d-flex flex-column flex-lg-row justify-content-center align-items-center" }))
+            {
+                List<SelectListItem> items = (List<SelectListItem>)ViewBag.Categories;
+
+                <input id="page-index" type="hidden" name="pageIndex" value="1" />
+                <input type="text" name="search" placeholder="Enter something" class="form-control-lg rounded border-0 shadow col-11 col-md-8 col-lg-6 mt-3 mt-lg-0" />
+                @Html.DropDownList("category", items, new { @class = "form-control form-control-lg border-0 shadow col-11 col-md-8 col-lg-3 ml-lg-2 mt-3 mt-lg-0" })
+                <button type="submit" class="btn btn-lg btn-primary rounded col-11 col-md-8 col-lg-2 ml-2 mt-4 mt-lg-0 shadow">Search</button>
+            }
+        </div>
+    </div>
+
+    <div id="data" class="container-fluid">
+        @Html.Preloader("loadingItems", "my-4 py-4")
+    </div>
+</div>

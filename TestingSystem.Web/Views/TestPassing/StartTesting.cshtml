@@ -1,0 +1,34 @@
+﻿@model TestingSystem.BLL.DTO.TestDTO
+
+@{
+    ViewBag.Title = "Testing is ongoing";
+    int questionNumber = 0;
+}
+
+@section Scripts {
+    @if (Model.TimeRequired.HasValue)
+    {
+        <script>startCountdown(@Model.TimeRequired.Value);</script>
+    }
+}
+
+<div id="data">
+    @foreach (var question in Model.Questions)
+    {
+        questionNumber++;
+
+        using (Ajax.BeginForm("CheckAnswer", "TestPassing", new { testResultId = Model.TestResult.Id, questionId = question.Id }, new AjaxOptions(), new { id = $"question-{questionNumber}", @class = "question-form font-weight-bold mb-4 d-flex flex-column justify-content-start align-items-center" }))
+        {
+            @Html.Partial("_Question", question)
+            @*<button type="submit" class="btn btn-warning px-4 py-2 my-4 mx-auto">Submit</button>*@
+        }
+    }
+</div>
+
+<div class="d-flex justify-content-around align-items-center w-100 bg-primary shadow-lg text-white p-4 text-center fixed-bottom">
+    <span id="timer" class="font-weight-bold">--:--:--</span>
+    @Ajax.ActionLink("Submit", "_EndTesting", "TestPassing", new { testResultId = Model.TestResult.Id }, new AjaxOptions() {
+        OnBegin = "submitQuestions",
+        UpdateTargetId = "content"
+    }, new { id="end-testing", @class="btn btn-light"})
+</div>

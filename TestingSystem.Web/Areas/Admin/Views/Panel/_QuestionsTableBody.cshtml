@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TestingSystem.Web.Areas.Admin.Data.QuestionTableModel>
+
+@foreach (var item in Model)
+{
+    <tr class="text-center">
+        <td class="h-100 align-middle text-left w-75">
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td class="d-flex flex-column justify-content-center align-items-stretch">
+            @Ajax.ActionLink("Answers", "_AnswersForQuestion", "Panel", new { area = "Admin", questionId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data"
+            }, new { @class = "btn btn-sm btn-primary mx-lg-2 my-2" })
+            @Ajax.ActionLink("Edit", "_EditQuestion", "Test", new { questionId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data-form"
+            }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2" })
+            @Ajax.ActionLink("Delete", "_DeleteQuestion", "Test", new { questionId = item.Id, testId = item.TestId }, new AjaxOptions() { UpdateTargetId = "data" }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2" })
+        </td>
+    </tr>
+}

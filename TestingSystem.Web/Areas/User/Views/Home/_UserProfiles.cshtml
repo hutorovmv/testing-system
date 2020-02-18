@@ -1,0 +1,16 @@
+﻿@model PagedList<TestingSystem.Web.Areas.User.Data.UserCardModel>
+
+<div class="row my-2 py-4 d-flex justify-content-start align-items-stretch">
+    @foreach (var item in Model.Items)
+    {
+        <div class="col-8 col-md-6 col-lg-4 p-3 mx-auto mx-md-0 d-flex flex-wrap">
+            <div class="card bg-white text-center border-0 shadow px-2 py-4 w-100">
+                @Html.ImageFromArray(item.ProfilePhoto, "profile-photo-mid rounded mx-auto my-3", null, "profilePhoto")
+                <span class="h4 mt-1">@item.FullName</span>
+                @Html.ActionLink("Check profile", "Index", "Home", new { area = "User", userId = item.Id }, new { @class="btn btn-info mx-4 mt-4 stretched-link" })
+            </div>
+        </div>
+    }
+</div>
+
+@Html.Partial("_Pagination", Model)

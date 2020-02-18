@@ -1,0 +1,33 @@
+﻿@model TestingSystem.Web.Models.RouteValues
+
+<div class="row">
+    <div class="py-4 border rounded w-100">
+        @using (Ajax.BeginForm(Model.Action, Model.Controller, new { area = Model.Area }, new AjaxOptions
+        {
+            UpdateTargetId = "data",
+            LoadingElementId = "loadingItems",
+            LoadingElementDuration = 200
+        }, new { id = "pagination-form", @class = "col-12 d-flex justify-content-center align-items-center" }))
+        {
+            @*List<SelectListItem> items = (List<SelectListItem>)ViewBag.Categories;*@
+
+            <div class="container">
+                <input id="page-index" type="hidden" name="pageIndex" value="1" />
+                <div class="row d-flex justify-content-center align-items-center">
+                    <input type="text" name="firstName" placeholder="First Name" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 mt-3 mt-lg-0" />
+                    <input type="text" name="lastName" placeholder="Last Name" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />
+                    <input type="text" name="contactEmail" placeholder="Contact Email" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />
+                    @*<input type="date" name="search" placeholder="Field" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />
+                    <input type="text" name="search" placeholder="Field" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />
+                    <input type="text" name="search" placeholder="Field" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />*@
+                </div>
+                <div class="row d-flex justify-content-center align-items-center mt-3">
+                    <input type="date" name="search" placeholder="Field" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 mt-3 mt-lg-0" />
+                    <input type="date" name="search" placeholder="Field" class="form-control rounded border-0 shadow col-11 col-md-8 col-lg-2 ml-lg-2 mt-3 mt-lg-0" />
+                    @*@Html.DropDownList("category", items, new { @class = "form-control form-control border-0 shadow col-11 col-md-8 col-lg-2 mt-3 mt-lg-0" })*@
+                    <button type="submit" class="btn btn btn-primary rounded col-11 col-md-8 col-lg-2 ml-lg-2 mt-4 mt-lg-0 shadow">Search</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@using TestingSystem.Web.Helpers
+@model TestingSystem.BLL.DTO.TestResultDTO
+
+<div id="data" class="card col-7 p-4 bg-white rounded m-auto border-0 shadow-sm text-center">
+	<h2 class="text-center my-4">Testing completed</h2>
+	<hr />
+
+	<div class="mx-auto w-75 h-75">
+		<canvas id="chart"></canvas>
+	</div>
+
+	<div class="mt-3">
+		@Html.InfoString("Testing Start", @Model.StartDateTime)
+		@Html.InfoString("Testing End", @Model.EndDateTime)
+		@Html.InfoString("Test Name", @Model.TestName)
+		@if (!string.IsNullOrWhiteSpace(Model.UserFullName))
+		{
+			@Html.InfoString("User Full Name", @Model.UserFullName)
+		}
+	</div>
+</div>
+
+<script>
+    answersPie(@Model.CorrectAnswers, @(Model.TotalCorrectAnswers-Model.CorrectAnswers));
+</script>

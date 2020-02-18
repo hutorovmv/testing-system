@@ -1,0 +1,17 @@
+﻿@using TestingSystem.Web.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    @Html.Partial("_TestExtendedSearchForm", new RouteValues {
+        Action = "_SelectTestsExtended",
+        Controller = "Test",
+        Area = "Admin"
+    })
+
+    <div id="data" class="container-fluid">
+        @Html.Preloader("loadingItems", "my-4 py-4")
+    </div>
+</div>

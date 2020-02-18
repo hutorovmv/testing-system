@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TestingSystem.Web.Models.TestResultTableModel>
+
+<tr class="text-center">
+    <th>
+        @Html.DisplayNameFor(model => model.TestName)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.StartDateTime)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.EndDateTime)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.TotalCorrectAnswers)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CorrectAnswers)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CorrectPercent)
+    </th>
+</tr>

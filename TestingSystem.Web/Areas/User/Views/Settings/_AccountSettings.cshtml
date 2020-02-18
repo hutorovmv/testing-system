@@ -1,0 +1,32 @@
+﻿@model TestingSystem.BLL.DTO.UserDTO
+@using TestingSystem.Web.Areas.User.Data;
+
+<section class="card col-7 p-4 border-0 shadow-sm mt-4 mx-auto">
+    <h2>Account <span class="badge badge-dark ml-2">@Model.Role</span></h2>
+    <hr />
+
+    <div class="form-group py-2">
+        <div class="border-bottom pb-2">
+            @if (!Model.IsEmailConfirmed)
+            {
+                @Html.ActionLink("Confirm Email", "SendEmailConfirmation", "Email", new { userName = Model.UserName }, new { @class = "btn btn-info rounded-pill d-block mb-3" })
+            }
+            else
+            {
+                <p class="btn btn-success rounded-pill disabled d-block">Email is already confirmed</p>
+            }
+        </div>
+
+        <label for="userName" class="control-label mt-3">UserName</label>
+        <input id="userName" class="form-control" value="@Model.UserName" readonly />
+        <small class="form-text text-muted">You're not able to change it</small>
+
+        <div id="emailData">
+            @Html.Partial("_UpdateEmail", new UpdateEmailModel { /*UserName = Model.UserName,*/ Email = Model.Email })
+        </div>
+
+        <div id="passwordData">
+            @Html.Partial("_UpdatePassword", new UpdatePasswordModel())
+        </div>
+    </div>
+</section>

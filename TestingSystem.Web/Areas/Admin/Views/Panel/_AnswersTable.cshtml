@@ -1,0 +1,39 @@
+﻿@model PagedList<TestingSystem.Web.Areas.Admin.Data.AnswerTableModel>
+
+@using (Ajax.BeginForm("_AnswersForQuestion", "Panel", new { area = "Admin" }, new AjaxOptions
+{
+    UpdateTargetId = "data",
+}, new { id = "pagination-form" }))
+{
+    <input id="page-index" type="hidden" name="pageIndex" value="1" />
+    <input id="questionId" type="hidden" name="questionId" value="@ViewBag.QuestionId" />
+}
+
+@Html.Partial("_StatusMessage")
+
+<div id="data-form"></div>
+
+@Ajax.ActionLink("Add answer", "_CreateAnswer", "Test", new { area = "Admin", questionId = ViewBag.QuestionId }, new AjaxOptions
+{
+    UpdateTargetId = "data-form"
+}, new { @class = "btn btn-primary" })
+
+<div class="row d-flex justify-content-start align-items-stretch my-4">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            @Html.Partial("_AnswersTableHead", Model.Items)
+        </thead>
+        <tbody>
+            @Html.Partial("_AnswersTableBody", Model.Items)
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_Pagination", Model)
+
+<div class="text-center">
+    @Ajax.ActionLink("Back", "_QuestionsForTest", "Panel", new { area = "Admin", testId = ViewBag.TestId }, new AjaxOptions
+    {
+        UpdateTargetId = "data"
+    }, new { @class = "btn btn-dark my-2 py-2 col-6 col-lg-4" })
+</div>

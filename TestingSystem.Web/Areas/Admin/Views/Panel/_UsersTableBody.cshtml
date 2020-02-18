@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TestingSystem.Web.Areas.Admin.Data.UserTableModel>
+
+@foreach (var item in Model)
+{
+    <tr class="text-center">
+        <td class="h-100 align-middle">
+            @Html.ImageFromArray(item.ProfilePhoto, "profile-photo-small rounded mx-auto my-3", null, "profilePhoto")
+        </td>
+        <td class="h-100 align-middle">
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td class="h-100 align-middle @(item.IsEmailConfirmed ? "bg-success" : "bg-danger")">
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td class="h-100 align-middle">
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td class="h-100 d-flex flex-column justify-content-center align-items-stretch">
+            @Html.ActionLink("Profile", "Index", "Home", new { area = "User", userId = item.Id }, new { @class = "btn btn-sm btn-info mx-lg-2 my-2" })
+            @if (!item.IsAdmin)
+            {
+                @Html.ActionLink("Make admin", "_GiveAdminStatus", "User", new { userId = item.Id }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2" })
+                @Html.ActionLink("Delete", "_DeleteUser", "User", new { userId = item.Id }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2" })
+            }
+        </td>
+    </tr>
+}

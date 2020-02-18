@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TestingSystem.Web.Areas.Admin.Data.TestTableModel>
+
+@foreach (var item in Model)
+{
+    <tr class="text-center">
+        <td class="h-100 align-middle w-50">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="h-100 align-middle">
+            @if (item.TimeRequired.HasValue)
+            {
+                @Html.DisplayFor(modelItem => item.TimeRequired.Value)
+            }
+            else
+            {
+                @:"unknown"
+            }
+        </td>
+        <td class="h-100 align-middle">
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td class="d-flex flex-column justify-content-center align-items-stretch">
+            @Ajax.ActionLink("Questions", "_QuestionsForTest", "Panel", new { area = "Admin", testId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data"
+            }, new { @class = "btn btn-sm btn-primary mx-lg-2 my-2" })
+            @Ajax.ActionLink("Edit", "_EditTest", "Test", new { testId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data"
+            }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2" })
+            @Ajax.ActionLink("Results", "_TestResults", "Panel", new { area = "Admin", testId = item.Id }, new AjaxOptions
+            {
+                UpdateTargetId = "data"
+            }, new { @class = "btn btn-sm btn-info mx-lg-2 my-2" })
+            @Ajax.ActionLink("Delete", "_DeleteTest", "Test", new { testId = item.Id }, new AjaxOptions() { UpdateTargetId = "data" }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2" })
+        </td>
+    </tr>
+}

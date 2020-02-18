@@ -1,0 +1,24 @@
+﻿@using TestingSystem.Web.Models
+
+@{
+    ViewBag.Title = "Admin panel";
+}
+
+<div class="container pb-4">
+    <section class="row mb-4" id="navData">
+        @Html.Action("_ShowNavigation")
+    </section>
+
+    <div class="row">
+        <section id="data" class="col-12">
+            @using (Ajax.BeginForm("_ExtendedAdminUserSearch", "Panel", new { area = "Admin" }, new AjaxOptions
+            {
+                UpdateTargetId = "data",
+                LoadingElementId = "loadingSettings",
+                LoadingElementDuration = 200
+            }, new { id = "pagination-form" })) { }
+
+            @Html.Preloader("loadingSettings", "py-4")
+        </section>
+    </div>
+</div>

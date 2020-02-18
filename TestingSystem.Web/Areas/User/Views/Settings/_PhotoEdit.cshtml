@@ -1,0 +1,7 @@
+﻿@model byte[]
+
+<label for="profilePhoto" class="d-flex flex-column justify-content-around align-items-center">
+    <span class="badge-pill badge-dark badge-edit">Edit</span>
+    @Html.ImageFromArray(Model, "profile-photo-mid")
+</label>
+<input id="profilePhoto" name="profilePhoto" type="file" class="d-none" />

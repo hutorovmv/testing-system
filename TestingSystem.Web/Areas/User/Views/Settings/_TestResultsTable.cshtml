@@ -1,0 +1,24 @@
+﻿@model PagedList<TestingSystem.Web.Models.TestResultTableModel>
+
+@using (Ajax.BeginForm("_TestResults", "Settings", null, new AjaxOptions 
+{ 
+    UpdateTargetId = "data",
+    LoadingElementId = "loadingItems",
+    LoadingElementDuration = 200
+}, new { id = "pagination-form" }))
+{
+    <input id="page-index" type="hidden" name="pageIndex" value="1" />
+}
+
+<div class="row d-flex justify-content-start align-items-stretch my-4 w-100">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            @Html.Partial("_TestResultsTableHead", Model.Items)
+        </thead>
+        <tbody id="data">
+            @Html.Partial("_TestResultsTableBody", Model.Items)
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_Pagination", Model)

@@ -1,0 +1,22 @@
+﻿@model TestingSystem.Web.Areas.User.Data.UserCardModel
+
+    <div class="btn-group">
+        <a href="/UserPanel/Index" type="button" class="btn btn-warning bg-white rounded border-0 shadow-sm pl-0 py-0" data-toggle="dropdown">
+            @Html.ImageFromArray(Model.ProfilePhoto, "profile-photo-small rounded")
+            <span class="font-weight-bold mx-2">@Model.FullName</span>
+            <i class="fa fa-chevron-down account-settings-button mr-1"></i>
+        </a>
+        <div class="dropdown-menu">
+            @if (Model.IsAdmin)
+            {
+                @Html.ActionLink("Admin Panel", "Index", "Panel", new { area = "Admin" }, new { @class = "dropdown-item" })
+                <div class="dropdown-divider"></div>
+            }
+            @Html.ActionLink("User Extended Search", "UserExtendedSearch", "Home", new { area = "" }, new { @class = "dropdown-item" })
+            @Html.ActionLink("Test Extended Search", "TestExtendedSearch", "Home", new { area = "" }, new { @class = "dropdown-item" })
+            <div class="dropdown-divider"></div>
+            @Html.ActionLink("Profile", "Index", "Home", new { userId = Model.Id }, new { @class = "dropdown-item" })
+            @Html.ActionLink("User Panel", "Index", "Settings", null, new { @class = "dropdown-item" })
+            @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "dropdown-item" })
+        </div>
+    </div>

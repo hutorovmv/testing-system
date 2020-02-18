@@ -1,0 +1,11 @@
+﻿@model IEnumerable<TestingSystem.BLL.DTO.AnswerDTO>
+
+@foreach (var answer in Model)
+{
+    <div class="answer-checkbox w-100 d-flex flex-column align-items-center">
+        <input id="answer-@answer.Id" type="checkbox" name="answerIds" value="@answer.Id" class="d-none" />
+        <label for="answer-@answer.Id" class="col-7 p-4 bg-white rounded border-0 shadow-sm mt-2">
+                <i class="fa fa-square-o"></i> @answer.Text
+        </label>
+    </div>
+}
