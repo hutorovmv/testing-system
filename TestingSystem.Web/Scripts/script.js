@@ -39,7 +39,7 @@
 		else
 			element.find("i").replaceWith('<i class="fa fa-check-square"></i>');
 
-		element.addClass("checkbox-checked");
+		element.toggleClass("checkbox-checked");
 	});
 
 	$(document).on("mousedown", ".answer-radio", e => {
