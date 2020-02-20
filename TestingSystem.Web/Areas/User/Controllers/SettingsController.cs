@@ -29,21 +29,21 @@ namespace TestingSystem.Web.Areas.User.Controllers
         {
             new PanelItem
             {
-                Name = "Налаштування аккаунта",
+                Name = "Account Settings",
                 Action = "_AccountSettings",
                 Controller = "Settings",
                 Area = "User"
             },
             new PanelItem
             {
-                Name = "Налаштування профілю",
+                Name = "Profile settings",
                 Action = "_ProfileSettings",
                 Controller = "Settings",
                 Area = "User"
             },
             new PanelItem
             {
-                Name = "Результати testувань",
+                Name = "Test Results",
                 Action = "_TestResults",
                 Controller = "Settings",
                 Area = "User"

@@ -4,28 +4,30 @@
     <div class="row">
         <div class="col-12">
             <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-10 col-lg-3 text-lg-left mb-3 mb-lg-0 bg-white rounded-lg shadow py-3">
+                <div class="col-12 col-md-10 col-lg-3 text-lg-left mb-3 mb-lg-0 bg-white rounded-lg shadow py-3 align-self-start">
                     @Html.ImageFromArray(Model.ProfilePhoto, "profile-photo-large m-auto")
                 </div>
                 <div class="col-12 col-md-10 col-lg-7 text-center text-lg-left px-2">
                     <div class="bg-white rounded-lg shadow p-4 h-100">
                         <h2 class="border-bottom pb-3 mb-4">@Model.FullName</h2>
-
-                        @if (Model.BirthDate != null)
+                        
+                        @if (Model.BirthDate.HasValue)
                         {
-                            @Html.InfoString("BirthDate", Model.BirthDate)
+                            @Html.InfoString("BirthDate", Model.BirthDate.Value.ToShortDateString())
                         }
-                        @if (Model.ContactEmail != null)
+                        @if (!string.IsNullOrWhiteSpace(Model.ContactEmail))
                         {
                             @Html.InfoString("ContactEmail", Model.ContactEmail)
                         }
-                        @if (Model.ContactPhone != null)
+                        @if (!string.IsNullOrWhiteSpace(Model.ContactPhone))
                         {
                             @Html.InfoString("ContactPhone", Model.ContactPhone)
                         }
-                        @if (Model.AboutMe != null)
+                        @if (!string.IsNullOrWhiteSpace(Model.AboutMe))
                         {
-                            @Html.InfoString("AboutMe", Model.AboutMe)
+                            <p class="border-top mt-3 py-3">
+                                @Model.AboutMe
+                            </p>
                         }
                     </div>
                 </div>

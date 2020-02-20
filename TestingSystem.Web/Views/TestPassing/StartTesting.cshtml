@@ -26,9 +26,13 @@
 </div>
 
 <div class="d-flex justify-content-around align-items-center w-100 bg-primary shadow-lg text-white p-4 text-center fixed-bottom">
-    <span id="timer" class="font-weight-bold">--:--:--</span>
-    @Ajax.ActionLink("Submit", "_EndTesting", "TestPassing", new { testResultId = Model.TestResult.Id }, new AjaxOptions() {
+    @if (Model.TimeRequired.HasValue)
+    {
+        <span id="timer" class="font-weight-bold">--:--:--</span>
+    }
+    @Ajax.ActionLink("Submit", "_EndTesting", "TestPassing", new { testResultId = Model.TestResult.Id }, new AjaxOptions()
+    {
         OnBegin = "submitQuestions",
-        UpdateTargetId = "content"
-    }, new { id="end-testing", @class="btn btn-light"})
+        UpdateTargetId = "content",
+    }, new { id = "end-testing", @class = "btn btn-light" })
 </div>

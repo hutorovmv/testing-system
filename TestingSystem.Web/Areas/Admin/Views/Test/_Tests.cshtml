@@ -13,9 +13,9 @@
                         <span class="text-muted mt-1">@item.TimeRequired.Value</span>
                     }
                     <span class="text-muted mt-1">@item.AuthorFullName</span>
-                    <span class="text-muted mt-1">@item.DateTime</span>
+                    <span class="text-muted mt-1">@item.DateTime.ToShortDateString()</span>
                 </div>
-                @Html.ActionLink("Пройти test", "ShowTestDescription", "TestPassing", new { area = "", testId = item.Id }, new { @class = "btn btn-info mt-4 mx-4" })
+                @Html.ActionLink("Start test", "ShowTestDescription", "TestPassing", new { area = "", testId = item.Id }, new { @class = "btn btn-info mt-4 mx-4" })
             </div>
         </div>
     }

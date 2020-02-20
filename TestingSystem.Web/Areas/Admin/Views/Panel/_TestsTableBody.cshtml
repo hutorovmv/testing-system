@@ -17,7 +17,7 @@
             }
         </td>
         <td class="h-100 align-middle">
-            @Html.DisplayFor(modelItem => item.DateTime)
+            @item.DateTime.ToShortDateString()
         </td>
         <td class="d-flex flex-column justify-content-center align-items-stretch">
             @Ajax.ActionLink("Questions", "_QuestionsForTest", "Panel", new { area = "Admin", testId = item.Id }, new AjaxOptions

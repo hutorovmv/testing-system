@@ -19,8 +19,8 @@
             @Html.ActionLink("Profile", "Index", "Home", new { area = "User", userId = item.Id }, new { @class = "btn btn-sm btn-info mx-lg-2 my-2" })
             @if (!item.IsAdmin)
             {
-                @Html.ActionLink("Make admin", "_GiveAdminStatus", "User", new { userId = item.Id }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2" })
-                @Html.ActionLink("Delete", "_DeleteUser", "User", new { userId = item.Id }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2" })
+                @Ajax.ActionLink("Make admin", "_GiveAdminStatus", "User", new { userId = item.Id }, new AjaxOptions { UpdateTargetId = "data" }, new { @class = "btn btn-sm btn-warning mx-lg-2 my-2" })
+                @Ajax.ActionLink("Delete", "_DeleteUser", "User", new { userId = item.Id }, new AjaxOptions { UpdateTargetId = "data" }, new { @class = "btn btn-sm btn-danger mx-lg-2 my-2" })
             }
         </td>
     </tr>
