@@ -8,8 +8,8 @@
     <ProjectGuid>{538F5338-6BD3-43D1-BCCB-674B17B2833E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestingSystemEPAM.BLL</RootNamespace>
-    <AssemblyName>TestingSystemEPAM.BLL</AssemblyName>
+    <RootNamespace>TestingSystem.BLL</RootNamespace>
+    <AssemblyName>TestingSystem.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
